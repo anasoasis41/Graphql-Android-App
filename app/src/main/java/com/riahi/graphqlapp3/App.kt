@@ -9,7 +9,7 @@ class App: Application() {
     private val BASE_URL = "https://api.github.com/graphql"
 
     //TODO: put your token here!!!
-    private val GITHUB_AUTH_TOKEN = "4b4003ea2e14da4bc4b273cdd0530e1e13d67d86"
+    private val GITHUB_AUTH_TOKEN = ""
 
     private lateinit var apolloClient: ApolloClient
 
