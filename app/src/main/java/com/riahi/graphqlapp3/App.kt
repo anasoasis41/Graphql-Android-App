@@ -3,13 +3,14 @@ package com.riahi.graphqlapp3
 import android.app.Application
 import com.apollographql.apollo.ApolloClient
 import okhttp3.OkHttpClient
+import java.util.concurrent.TimeUnit
 
 class App: Application() {
 
     private val BASE_URL = "https://api.github.com/graphql"
 
     //TODO: put your token here!!!
-    private val GITHUB_AUTH_TOKEN = ""
+    private val GITHUB_AUTH_TOKEN = "4b4003ea2e14da4bc4b273cdd0530e1e13d67d86"
 
     private lateinit var apolloClient: ApolloClient
 
@@ -17,6 +18,8 @@ class App: Application() {
         super.onCreate()
 
         val okHttpClient = OkHttpClient.Builder()
+            .writeTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
             .addInterceptor {
                 val original = it.request()
                 val builder = original.newBuilder().method(original.method(), original.body())
